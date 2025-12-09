@@ -1,0 +1,37 @@
+{
+  "version": 2,
+  "name": "cashpulse-platform",
+  "builds": [
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/assets/(.*)",
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable"
+      },
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "env": {
+    "VITE_PLATFORM_NAME": "CashPulse",
+    "VITE_SUPPORT_EMAIL": "blessedsuccess538@gmail.com",
+    "VITE_WHATSAPP_URL": "https://wa.me/2348085430370",
+    "VITE_TELEGRAM_CHANNEL": "https://t.me/makingonline217"
+  },
+  "build": {
+    "env": {
+      "NODE_VERSION": "18"
+    }
+  }
+}
